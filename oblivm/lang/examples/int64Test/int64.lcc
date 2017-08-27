@@ -1,0 +1,25 @@
+package com.oblivm.backend.generated.int64Only;
+
+void serialize@l@p(secure int@s[secure l] toWrite, public int8[public p] filename) = native SecureArray.serialize;
+void sortWithPayload@l@s@t(int@s[l] toSort, int@t[l] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+
+int main@m@n(int64[m] a, int64[n] b) {
+
+       /* bfor(m) (int i = 0; i < m; i=i+1) {
+             int64 tmp = a[i];
+   	     debug(tmp);
+        }*/
+	
+	//int64 l = a[0];
+	//int64 r = a[1];
+       //int64 diff = a[1] - a[0];
+       /*debug(diff);
+       
+       writeArray(a, "example");
+       readArray(b, "example2");
+       //string s = "s";
+*/
+       //return diff;
+
+       return a[0];
+}

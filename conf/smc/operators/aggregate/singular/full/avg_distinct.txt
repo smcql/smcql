@@ -1,0 +1,35 @@
+package $packageName;
+void sort@v@s(int@s[v] toSort, int1 isAscending) = native sortLib.sort;
+void sortWithPayload@v@s@t(int@s[v] toSort, int@t[v] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+
+$sortMethod
+
+
+int64[1] run@v(int$size[v] a, int$size[v] b) {
+	int tupleCount;
+	getArrElements(a, tupleCount);	
+	int$size[v] aPrime = a;
+
+	$sortInput
+
+        secure int64[1] dst;
+	int idx = 0;
+	int$size lastValue =  aPrime[idx];
+	secure int64 count = 1;
+	secure int64 sum = aPrime[idx];
+
+	bfor(v) (idx = 1; idx < tupleCount; idx = idx+1) {
+
+           if(aPrime[idx] != lastValue) {
+	        count = count + 1;
+	        sum = sum + aPrime[idx];
+               lastValue = aPrime[idx];
+            }
+         }
+         
+     dst[0] = sum/count;
+	 secure int sz = 1;
+	 setArrElements(dst, sz);
+	 return dst;
+}
+

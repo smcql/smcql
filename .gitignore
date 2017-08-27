@@ -1,0 +1,15 @@
+smcql.log.lck
+conf/setup.codd
+*.DS_Store
+.classpath
+.project
+.settings/
+Config.conf
+conf/setup.localhost
+runeva.sh
+rungen.sh
+runtogether.sh
+smcql.log*
+/src/main/java/com/
+/bin/
+/target/

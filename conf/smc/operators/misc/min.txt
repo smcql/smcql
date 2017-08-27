@@ -1,0 +1,7 @@
+int min@n(int[n] input) {
+	int min = input[1];
+    if(input[0] < input[1]) {
+		min = input[0];
+	}
+	return min;   
+}

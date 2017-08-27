@@ -1,0 +1,37 @@
+package $packageName;
+
+#define LIMIT $limit
+
+
+int$size[LIMIT] run@v@w(int$size[v] a, int$size[w] b) {
+
+	int tupleCount;
+	int sLimit = $limit;
+	public int limit = $limit;
+
+	getArrElements(a, tupleCount);	   
+	
+
+        secure int$size[secure LIMIT] dst;
+
+
+        bfor(limit) (int i = 0; i < limit; i=i+1) {
+	       if(i < tupleCount) {
+	           dst[i] = a[i];
+		   }
+            }
+         
+
+
+		 
+         int outputSize = sLimit;
+	 if(tupleCount < sLimit) {
+             outputSize = tupleCount;
+         }
+
+	 setArrElements(dst, outputSize);
+
+
+	 
+	 return dst;
+}

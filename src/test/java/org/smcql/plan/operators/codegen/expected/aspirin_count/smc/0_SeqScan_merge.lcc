@@ -1,0 +1,48 @@
+package org.smcql.generated.aspirin_count.SeqScan0.merge;
+
+secure int1 lessThan(int129  lhs, int129 rhs) {
+    int1 res = 0;
+    if(lhs$0~64$ < rhs$0~64$) {
+        res = 1;
+    }
+    else if(lhs$0~64$ == rhs$0~64$ && lhs$64~128$ < rhs$64~128$) { 
+        res = 1;
+    }
+    return res;
+}
+
+
+
+
+// combine sorted entries from Alice and Bob
+int129[m+n] run@m@n(int129[m] a, int129[n] b) {
+      secure int aPtr = 0;
+      secure int bPtr = 0;
+      secure int mPtr;
+
+     public int bound = m+n;
+
+      secure int129[secure m+n] merged; 
+
+ 
+
+      bfor(bound)(mPtr = 0; mPtr < bound; mPtr = mPtr + 1) {
+
+	if(bPtr < n && (aPtr == m || lessThan(b[bPtr], a[aPtr]) == 1)) {
+	    merged[mPtr] = b[bPtr];
+	    bPtr = bPtr + 1;
+	    	    
+	 }
+	 else {
+	      merged[mPtr] = a[aPtr];
+ 	      aPtr = aPtr + 1;
+	}
+
+
+	
+	} // end while
+
+
+	setArrElements(merged, mPtr);
+	return merged;
+}

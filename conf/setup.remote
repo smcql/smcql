@@ -1,0 +1,20 @@
+#configure locations
+codegen-target=bin
+data-providers=conf/connections/remote-hosts
+
+#log information
+log-level=info
+local-log-file=logs/smcql.log
+
+#query planner information
+sliced-execution=false
+slice-parallelism=2
+semijoin-execution=false
+
+#postgres credentials and info
+[psql]
+host=localhost
+port=5432
+db=smcql_testDB
+user=<insert psql username>
+password=<insert psql password>

@@ -1,0 +1,61 @@
+package $packageName;
+
+typedef char = int8;
+void sort@l@s(int@s[l] toSort, int1 isAscending) = native sortLib.sort;
+
+secure int$dSize writeValues(int$sSize srcTuple, int rowNum) {
+	int$dSize dstTuple;
+    $writeDst
+	dstTuple$rowNum = rowNum;
+    return dstTuple;
+}
+
+secure int1 applyFilter(secure int$sSize tuple) {
+	secure int1 ret = 0;
+	$applyFilter
+	
+	return ret;
+}
+
+// sorting taken care of externally for win agg by psql planner
+int$dSize[l] run@l(int$sSize[l] src, int$sSize[l] rhs) { 
+    secure int$dSize[secure l] dst;
+    secure int rn = 1;
+    secure int$sSize prev = src[0];
+    int$mSize prevWin = prev$winMask;
+
+    dst[0] = writeValues(src[0], rn);
+    int tupleCount;
+    getArrElements(src, tupleCount);
+    int dstIdx = 1;
+	secure int1 filter = 0;
+    
+    if (applyFilter(src[0]) != 1) {
+    	prev = src[1];
+    	prevWin = prev$winMask;
+    	dstIdx = 0;
+    }
+    
+    bfor(l-1) (secure int i = 1; i < tupleCount; i = i + 1) {
+    	int$sSize current = src[i];
+        int$mSize currentWin = current$winMask;
+		
+		filter = applyFilter(src[i]);
+		if (filter == 1) {
+			if(currentWin == prevWin) {
+	    		rn = rn + 1;
+        	}
+	 		else {
+	    		rn = 1;
+        	}
+        	
+        	dst[dstIdx] = writeValues(src[i], rn);
+  	 		dstIdx = dstIdx + 1;
+	 		prevWin = currentWin;
+		}
+	}
+   
+   	setArrElements(dst, dstIdx);
+
+   	return dst;
+}

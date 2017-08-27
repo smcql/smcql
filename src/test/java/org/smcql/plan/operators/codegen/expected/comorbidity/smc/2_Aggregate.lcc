@@ -1,0 +1,60 @@
+package org.smcql.generated.comorbidity.Aggregate2;
+
+
+
+secure int1 groupByMatch(secure int320 lhs, secure int320 rhs) {       
+    int1 ret = 1;
+
+    int256 l1 = lhs$0~256$;
+    int256 r1 = rhs$0~256$;
+    if(l1 != r1)  {
+            ret = 0;
+     }
+
+    return ret;
+
+}
+
+
+
+
+
+//receive partial counts that were computed in plaintext
+// each struct contains a groupBy field and a count field
+int320[m] run@m@n(int320[m] a, int320[n] b) {
+      
+
+      secure int aIdx = 0;
+      secure int mIdx = 0;
+      int320[secure m] aPrime = a;
+
+      
+
+
+      secure int320[secure m] merged;            
+      merged[mIdx] = a[aIdx];
+      
+
+      aIdx = 1;
+      int cutoff;
+      getArrElements(aPrime, cutoff);
+
+      bwhile(m-1)(aIdx < cutoff) {
+          
+	  if(groupByMatch(merged[mIdx], aPrime[aIdx]) == 1) {
+	    secure int320 deref = merged[mIdx];
+secure int320 toAdd = a[aIdx];
+deref$256~320$ = deref$256~320$ + toAdd$256~320$;
+merged[mIdx] = deref;
+
+          }
+          else {
+	      mIdx = mIdx + 1;
+	      merged[mIdx] = aPrime[aIdx];
+	  }
+	  aIdx = aIdx + 1;
+	}
+	   
+	setArrElements(merged, mIdx+1);
+  	return merged;
+}

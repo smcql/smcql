@@ -1,0 +1,15 @@
+int[n+m] limit@n@m(int[n] x, int[m] y) { 
+	int k_x = x[0];
+	int k_y = y[0];
+	
+	int[n+m] result;
+	int ptr = 0;
+	bfor (n) (int i=0; i<n && i<k_x; i=i+1) {
+		result[i] = x[i];
+		ptr = ptr + 1;
+	}
+	bfor (m) (int j=0; j<m && i<k_y; j=j+1) {
+		result[ptr+j] = y[j];
+	}
+    return result;
+}

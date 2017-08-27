@@ -1,0 +1,4 @@
+Rsrc-Class-Path: ./ argparse4j-0.1.0.jar commons-lang-2.6.jar oblivm-flexsc-0.2.jar commons-cli-1.2.jar commons-lang3-3.3.2.jar org.hamcrest.core_1.3.0.v201303031735.jar commons-io-2.4.jar junit.jar
+Class-Path: .
+Rsrc-Main-Class: com.oblivm.backend.lang.Cmd
+Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader

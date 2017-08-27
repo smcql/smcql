@@ -1,0 +1,47 @@
+package $packageName;
+
+$sortMethod
+
+secure int1 groupByMatch(secure int$size lhs, secure int$size rhs) {       
+$groupByMatch
+}
+
+
+
+
+
+//receive partial counts that were computed in plaintext
+// each struct contains a groupBy field and a count field
+int$size[m] run@m@n(int$size[m] a, int$size[n] b) {
+      
+
+      secure int aIdx = 0;
+      secure int mIdx = 0;
+      int$size[secure m] aPrime = a;
+
+      $sortInput
+
+
+      secure int$size[secure m] merged;            
+      merged[mIdx] = a[aIdx];
+      
+
+      aIdx = 1;
+      int cutoff;
+      getArrElements(aPrime, cutoff);
+
+      bwhile(m-1)(aIdx < cutoff) {
+          
+	  if(groupByMatch(merged[mIdx], aPrime[aIdx]) == 1) {
+	    $compute
+          }
+          else {
+	      mIdx = mIdx + 1;
+	      merged[mIdx] = aPrime[aIdx];
+	  }
+	  aIdx = aIdx + 1;
+	}
+	   
+	setArrElements(merged, mIdx+1);
+  	return merged;
+}

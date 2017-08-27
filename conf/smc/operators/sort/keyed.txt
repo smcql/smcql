@@ -1,0 +1,61 @@
+package $packageName;
+
+#define LIMIT $limit
+
+void sortWithPayload@n@s@t(int@s[n] toSort, int@t[n] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+typedef char = int8;
+
+
+// for sort key
+$extractKey
+
+
+int$size[LIMIT] run@n@m(int$size[n] a, int$size[m] b) { 
+   secure int tupleCount;
+   secure int nulls;
+   getArrElements(a, tupleCount);
+   nulls = n - tupleCount;
+    
+   secure int$size[secure n] toSort = a;
+   secure int$sortKeySize[secure  n] sortKey;
+   int1 signal = $signal;
+
+   int i;
+   bfor (n) (i=0; i<tupleCount; i=i+1) {
+         sortKey[i] = extractKey(toSort[i]);
+   }
+
+   bfor(n)(i=tupleCount; i < n; i=i+1) {
+       sortKey[i] = 0; 
+   }
+
+   sortWithPayload(sortKey, toSort, signal);
+
+   $handleNulls
+
+   int sLimit = $limit;
+   public int limit = $limit;
+	
+   secure int$size[secure LIMIT] dst;
+   
+   bfor(limit) (int i = 0; i < limit; i=i+1) {
+   		if(i < tupleCount) {
+	       dst[i] = toSort[i];
+		}
+   }
+
+   int outputSize = sLimit;
+	 if(tupleCount < sLimit) {
+         outputSize = tupleCount;
+     }
+
+   setArrElements(dst, outputSize);
+
+   return dst;
+}
+
+
+
+
+
+

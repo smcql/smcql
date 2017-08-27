@@ -1,0 +1,6 @@
+    int count_x = result[0];
+    int sum_x = result[1];
+    int count_y = result[2];
+    int sum_y = result[3];
+    result = (sum_x + sum_y)/(count_x + count_y);
+

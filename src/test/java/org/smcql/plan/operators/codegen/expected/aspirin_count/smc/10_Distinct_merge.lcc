@@ -1,0 +1,46 @@
+package org.smcql.generated.aspirin_count.Distinct10.merge;
+
+secure int1 lessThan(int64  lhs, int64 rhs) {
+    int1 res = 0;
+    if(lhs < rhs) {
+           res = 1;
+     }
+
+    return res;
+}
+
+
+
+
+// combine sorted entries from Alice and Bob
+int64[m+n] run@m@n(int64[m] a, int64[n] b) {
+      secure int aPtr = 0;
+      secure int bPtr = 0;
+      secure int mPtr;
+
+     public int bound = m+n;
+
+      secure int64[secure m+n] merged; 
+
+ 
+
+      bfor(bound)(mPtr = 0; mPtr < bound; mPtr = mPtr + 1) {
+
+	if(bPtr < n && (aPtr == m || lessThan(b[bPtr], a[aPtr]) == 1)) {
+	    merged[mPtr] = b[bPtr];
+	    bPtr = bPtr + 1;
+	    	    
+	 }
+	 else {
+	      merged[mPtr] = a[aPtr];
+ 	      aPtr = aPtr + 1;
+	}
+
+
+	
+	} // end while
+
+
+	setArrElements(merged, mPtr);
+	return merged;
+}

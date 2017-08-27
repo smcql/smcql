@@ -1,0 +1,4 @@
+#List the workers and their associated databases here
+#workerName=host:psqlPort,db name,smcql id (must be distinct, internal use)
+testDB1=localhost:5432,smcql_testDB_site1,1
+testDB2=localhost:5432,smcql_testDB_site2,2

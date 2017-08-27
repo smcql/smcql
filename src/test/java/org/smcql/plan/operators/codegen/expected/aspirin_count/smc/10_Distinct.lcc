@@ -1,0 +1,71 @@
+package org.smcql.generated.aspirin_count.Distinct10;
+void sort@v@s(int@s[v] toSort, int1 isAscending) = native sortLib.sort;
+
+
+
+// sorts in place
+void sortSimple@v(int64[secure v] toSort) {
+
+   secure int tupleCount;
+   secure int nulls;
+   getArrElements(toSort, tupleCount);
+   nulls = v - tupleCount;
+
+   int1 signal = 1;
+
+
+   sort(toSort, signal);
+
+   
+   // push the nulls to the end
+   bfor(v)(int i = 0; i < v; i=i+1) {
+       if(i < tupleCount) {
+        toSort[i] = toSort[i + nulls]; 
+	}
+	else {
+	   toSort[i] = 0;
+       }
+
+   }
+
+
+
+}
+
+int64[v] run@v@w(int64[v] a, int64[w] b) {
+
+	int tupleCount;
+	getArrElements(a, tupleCount);	    
+
+	int64[v] aPrime = a;
+	    int1 sortSignal = 1;
+    sortSimple@v(aPrime);
+
+
+        secure int64[secure v] dst;
+        int dstHead = 0;
+	int srcIdx = 0;
+
+	
+
+
+        dst[dstHead] = aPrime[srcIdx];
+
+        bfor(v-1) (srcIdx = 1; srcIdx < v; srcIdx = srcIdx + 1) {
+	    
+           if(aPrime[srcIdx] != dst[dstHead] && srcIdx < tupleCount) { 
+               dstHead = dstHead + 1;
+               dst[dstHead] = aPrime[srcIdx];
+            }
+         }
+
+
+		 
+         
+	 if(tupleCount == 0) {
+	          setArrElements(dst, tupleCount);
+         } else {
+		setArrElements(dst, dstHead + 1);
+	  }
+	 return dst;
+}

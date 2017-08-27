@@ -1,0 +1,29 @@
+
+// sorts in place
+void sortSimple@v(int$size[secure v] toSort) {
+
+   secure int tupleCount;
+   secure int nulls;
+   getArrElements(toSort, tupleCount);
+   nulls = v - tupleCount;
+
+   int1 signal = $signal;
+
+
+   sort(toSort, signal);
+
+   
+   // push the nulls to the end
+   bfor(v)(int i = 0; i < v; i=i+1) {
+       if(i < tupleCount) {
+        toSort[i] = toSort[i + nulls]; 
+	}
+	else {
+	   toSort[i] = 0;
+       }
+
+   }
+
+
+
+}

@@ -1,0 +1,4 @@
+package $packageName;
+
+void sort@m@n@s(int@s[m+n] toSort, int1 isAscending) = native sortLib.sort;
+void sortWithPayload@m@n@s@t(int@s[m+n] toSort, int@t[m+n] tuples, int1 isAscending) = native sortLib.sortWithPayload;

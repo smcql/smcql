@@ -1,0 +1,41 @@
+package $packageName;
+void sort@v@s(int@s[v] toSort, int1 isAscending) = native sortLib.sort;
+
+$sortMethod
+
+int$dSize[v] run@v@w(int$size[v] a, int$size[w] b) {
+
+	int tupleCount;
+	getArrElements(a, tupleCount);	    
+
+	int$size[v] aPrime = a;
+	$sortInput
+
+        secure int$size[secure v] dst;
+        int dstHead = 0;
+	int srcIdx = 0;
+
+	
+
+
+        dst[dstHead] = aPrime[srcIdx];
+
+        bfor(v-1) (srcIdx = 1; srcIdx < v; srcIdx = srcIdx + 1) {
+	    
+           if(aPrime[srcIdx] != dst[dstHead] && srcIdx < tupleCount) { 
+               dstHead = dstHead + 1;
+               dst[dstHead] = aPrime[srcIdx];
+            }
+         }
+
+
+		 
+         
+	 if(tupleCount == 0) {
+	          setArrElements(dst, tupleCount);
+         } else {
+		setArrElements(dst, dstHead + 1);
+	  }
+	 return dst;
+}
+

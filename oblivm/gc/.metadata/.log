@@ -1,0 +1,20 @@
+
+!ENTRY org.eclipse.ui.ide 4 4 2015-12-11 19:11:56.077
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2015-12-11 19:11:56.078
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2015-12-11 19:11:56.078
+!MESSAGE Could not write workspace metadata '/Users/johesbater/Projects/secure_sql/oblivmgcsmc/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree'.
+!STACK 0
+java.io.FileNotFoundException: /Users/johesbater/Projects/secure_sql/oblivmgcsmc/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree (No such file or directory)
+	at java.io.FileOutputStream.open0(Native Method)
+	at java.io.FileOutputStream.open(FileOutputStream.java:270)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:213)
+	at java.io.FileOutputStream.<init>(FileOutputStream.java:162)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:51)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1406)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1188)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2270)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor$4.run(IDEWorkbenchAdvisor.java:453)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)

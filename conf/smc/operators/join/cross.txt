@@ -1,0 +1,47 @@
+package $packageName;
+
+// produces cross product of two sets - invoked when no join predicate
+int$dSize[l*r] run@l@r(int$lSize[l] lhs, int$rSize[r] rhs) {
+	     	
+        int lTupleCount, rTupleCount;
+	getArrElements(lhs, lTupleCount);
+	getArrElements(rhs, rTupleCount);
+		    
+        secure int$dSize[secure l*r] dst;
+        int dstIdx = 0;
+
+
+	secure int$lSize t1 = 0;
+	secure int$rSize t2 = 0;
+
+
+
+        bfor(l) (int i = 0; i < lTupleCount; i = i + 1) {
+	        t1 = lhs[i];
+
+           bfor (l*r) (int j = 0; j < rTupleCount; j = j + 1) {
+  	        t2 = rhs[j];
+		
+                int$dSize tmp;
+       		$writeDst
+	        dst[dstIdx] = tmp;
+		
+                dstIdx = dstIdx + 1;
+
+		
+
+            }
+
+
+
+          }
+
+
+	 	  
+          setArrElements(dst, dstIdx);
+
+	  return dst;
+
+}
+
+

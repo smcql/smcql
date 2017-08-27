@@ -1,0 +1,54 @@
+package $packageName;
+
+void sort@l@s(int@s[l] toSort, int1 isAscending) = native sortLib.sort;
+void sort@r@s(int@s[r] toSort, int1 isAscending) = native sortLib.sort;
+
+void sortWithPayload@l@s@t(int@s[l] toSort, int@t[l] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+void sortWithPayload@r@s@t(int@s[r] toSort, int@t[r] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+
+
+typedef char = int8;
+
+secure int1 applyFilter(secure int$lSize lTuple, secure int$rSize rTuple) {
+	secure int1 ret = 0;
+	$applyFilter
+	
+	return ret;
+}
+
+int$dSize[l*r] run@l@r(int$lSize[l] lhs, int$rSize[r] rhs) {
+	     	
+	secure int lTupleCount, rTupleCount;
+	getArrElements(lhs, lTupleCount);
+	getArrElements(rhs, rTupleCount);
+		    
+	secure int$dSize[secure l*r] dst;
+	int dstIdx = 0;
+
+	secure int$lSize srcTuple = 0;
+	secure int$rSize t2 = 0;
+	secure int1 filter = 0;
+
+	bfor(l) (int i = 0; i < lTupleCount; i = i + 1) {
+		srcTuple = lhs[i];
+		
+		bfor (l*r) (int j = 0; j < rTupleCount; j = j + 1) {
+			t2 = rhs[j];
+			filter = applyFilter(srcTuple, t2);
+
+			if(filter == 1) {
+				int$dSize dstTuple;
+				$writeDst
+				dst[dstIdx] = dstTuple;
+				dstIdx = dstIdx + 1;
+			}
+		}
+	}
+
+	setArrElements(dst, dstIdx);
+
+	return dst;
+
+}
+
+

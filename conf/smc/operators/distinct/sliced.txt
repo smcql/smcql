@@ -1,0 +1,30 @@
+package $packageName;
+void sort@v@s(int@s[v] toSort, int1 isAscending) = native sortLib.sort;
+
+$sortMethod
+
+// since the slice key == schema, each slice can emit just one tuple
+int$dSize[1] run@v@w(int$size[v] a, int$size[w] b) {
+
+	int tupleCount;
+	getArrElements(a, tupleCount);	    
+
+	secure int$size[1] dst;
+	int32 one = 1;
+	int32 zero = 0;
+
+
+
+	int32 res = one;
+	if(tupleCount == zero) {
+		res = zero;
+	}
+	else {
+	   dst[0] = a[0];
+	}
+
+	setArrElements(dst, res);
+	return dst;
+
+}
+

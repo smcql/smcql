@@ -1,0 +1,54 @@
+package $packageName;
+void sort@v@s(int@s[v] toSort, int1 isAscending) = native sortLib.sort;
+void sortWithPayload@v@s@t(int@s[v] toSort, int@t[v] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+
+$sortMethod
+secure int1 groupByMatch(secure int$size a, secure int$size b) {       
+$groupByMatch
+}
+
+
+int$size[m] run@m@n(int$size[m] a, int$size[n] b) {
+	 secure int aIdx = 0;
+      secure int mIdx = 0;
+	int tupleCount;
+	getArrElements(a, tupleCount);	
+	int$size[secure m] aPrime = a;
+
+	$sortInput
+
+      secure int$size[secure m] merged; 
+      secure int64 count = 1;  
+      secure int64 sum = aPrime[aIdx]$cntMask;         
+      merged[mIdx] = aPrime[aIdx];
+
+      aIdx = 1;
+	  int$sSize lastValue =  aPrime[0];
+
+	bwhile(m-1)(aIdx < tupleCount){
+
+           if(groupByMatch(merged[mIdx], aPrime[aIdx]) == 1) {
+	           if(aPrime[aIdx] != lastValue) {
+		       	       sum = sum + aPrime[aIdx]$cntMask;
+	     			  count = count + 1;
+	               lastValue = aPrime[aIdx];
+	            }
+	            }
+	            else {
+	            	  secure int64 avg = sum/count;
+			          secure int$size tmp = merged[mIdx];
+			          tmp$cntMask = avg;
+			          merged[mIdx] = tmp;
+			          secure int64 count = 1;   
+			      		secure int64 sum = aPrime[aIdx]$cntMask; 
+				      mIdx = mIdx + 1;
+				      merged[mIdx] = aPrime[aIdx];
+				      lastValue = aPrime[aIdx];
+	     			 }
+	     	aIdx = aIdx + 1;
+            
+         }
+	 setArrElements(merged, mIdx+1);
+	 return merged;
+}
+

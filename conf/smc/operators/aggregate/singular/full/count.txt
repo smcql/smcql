@@ -1,0 +1,16 @@
+package $packageName;
+
+
+// if used for COUNT(DISTINCT), distinct inserted at compile time
+int$dSize[1] run@v(int$sSize[v] a, int$sSize[v] b) {
+	int tupleCount;
+	getArrElements(a, tupleCount);	
+
+    secure int$dSize[1] dst;
+	dst[0] = tupleCount;
+
+	int dstIdx = 1;
+	setArrElements(dst, dstIdx);
+	return dst;
+}
+

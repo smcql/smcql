@@ -1,0 +1,64 @@
+package $packageName;
+
+$sortMethod
+
+secure int1 groupByMatch(secure int$size lhs, secure int$size rhs) {       
+$groupByMatch
+}
+
+
+
+
+
+//receive partial counts and sums that were computed in plaintext
+// each struct contains a groupBy field and a count and sum field
+int[m] run@m@n(int$size[m] a, int$size[n] b) {
+      
+
+      secure int aIdx = 0;
+      secure int mIdx = 0;
+      int$size[secure m] aPrime = a;
+      $sortInput
+
+	  //size avg is the size of the groupby's and the avg.  
+      secure int$aSize[secure m] merged;  
+      secure int64 count = aPrime[aIdx]$cntMask;
+      secure int64 sum = aPrime[aIdx]$sumMask;       
+      merged[mIdx]= aPrime[aIdx]$0~72$;      
+      aIdx = 1;
+
+ 	  int cutoff;
+      getArrElements(aPrime, cutoff);
+
+      bwhile(m-1)(aIdx < cutoff) {
+      
+          
+	  if(groupByMatch(merged[mIdx], aPrime[aIdx]) == 1) {
+	      count = count + aPrime[aIdx]$cntMask;
+	      sum = sum + aPrime[aIdx]$sumMask;
+	     
+          }
+          else {
+	          secure int average = sum/count;
+	          secure int$size tmp = merged[mIdx];
+	          tmp$groupByMask = merged[mIdx]$groupByMask;
+	          tmp$cntMask = average;
+	          merged[mIdx] = tmp;
+		      mIdx = mIdx + 1;
+		      merged[mIdx]= aPrime[aIdx]$0~72$;
+		      count = aPrime[aIdx]$cntMask;
+	          sum = aPrime[aIdx]$sumMask;  
+	  }
+	  aIdx = aIdx + 1;
+
+	}
+	   secure int average = sum/count;
+	   secure int$size tmp = merged[mIdx];
+	   tmp$groupByMask = merged[mIdx]$groupByMask;
+	   tmp$cntMask = average;
+	   tmp$sumMask = average;
+	   merged[mIdx] = tmp;
+ 	 
+      setArrElements(merged, mIdx+1);
+      return merged;
+}

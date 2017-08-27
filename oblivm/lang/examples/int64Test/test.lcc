@@ -1,0 +1,50 @@
+package org.smcql.generated.old_comorbidity;
+typedef char = secure int8;
+// first arg is T[m+n][sizeof(T)]
+void sortm@m@s(int@s[m] toSort, int1 isAscending) = native sortLib.sort;
+void sortn@n@s(int@s[n] toSort, int1 isAscending) = native sortLib.sort;
+void sortb@n@m@s(int@s[m+n] toSort, int1 isAscending) = native sortLib.sort;
+void sortWithPayload@m@n@s@t(int@s[m+n] toSort, int@t[m+n] tuples, int1 isAscending) = native sortLib.sortWithPayload;
+
+struct tCount {
+       int32 pid;
+       int64 time; 
+};
+
+tCount tdeserializeStruct(int96 src) {
+       tCount dst;
+       dst.pid = src$0~31$;
+       dst.time = src$32~95$;
+       return dst;
+}
+
+int96 tserializeStruct(tCount src) {
+      int96 dst;
+      dst$0~31$ = src.pid;
+      dst$32~95$ = src.time;
+      return dst;
+}
+
+// Source query:
+
+// takes in timestamp, patient_id from local evaluation
+// ordered by icd9 for merge 
+int main@m@n(int96[m] a, int96[n] b) {
+      tCount t;
+
+      bfor(m)(int i = 0; i < m; i = i + 1) {
+          t = tdeserializeStruct(a[i]);
+	  debug(t.pid);
+          debug(t.time);
+      }
+
+
+      bfor(n)(int i = 0; i < n; i = i + 1) {
+          t = tdeserializeStruct(b[i]);
+	  debug(t.pid);
+          debug(t.time);
+      }
+
+      int r = 0;
+      return  r;
+}

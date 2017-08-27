@@ -1,0 +1,37 @@
+package $packageName;
+
+$lessThan
+
+
+// combine sorted entries from Alice and Bob
+int$size[m+n] run@m@n(int$size[m] a, int$size[n] b) {
+      secure int aPtr = 0;
+      secure int bPtr = 0;
+      secure int mPtr;
+
+     public int bound = m+n;
+
+      secure int$size[secure m+n] merged; 
+
+ 
+
+      bfor(bound)(mPtr = 0; mPtr < bound; mPtr = mPtr + 1) {
+
+	if(bPtr < n && (aPtr == m || lessThan(b[bPtr], a[aPtr]) == 1)) {
+	    merged[mPtr] = b[bPtr];
+	    bPtr = bPtr + 1;
+	    	    
+	 }
+	 else {
+	      merged[mPtr] = a[aPtr];
+ 	      aPtr = aPtr + 1;
+	}
+
+
+	
+	} // end while
+
+
+	setArrElements(merged, mPtr);
+	return merged;
+}

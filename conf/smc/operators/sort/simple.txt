@@ -1,0 +1,37 @@
+package $packageName;
+
+void sort@n@s(int@s[n] toSort, int1 isAscending) = native sortLib.sort;
+typedef char = int8;
+
+
+
+int$size[n] run@n@m(int$size[n] a, int$size[m] b) { 
+
+   secure int tupleCount;
+   secure int nulls;
+   getArrElements(a, tupleCount);
+   nulls = n - tupleCount;
+
+   secure int$size[secure n] toSort = a;
+   int1 signal = $signal;
+
+
+
+   sort(toSort, signal);
+   // push the nulls to the end
+   bfor(n)(int i = 0; i < n; i=i+1) {
+      if(signal == 1) {
+       if(i < tupleCount) {
+        toSort[i] = toSort[i + nulls]; 
+	}
+	else {
+	   toSort[i] = 0;
+       }
+   }      
+
+   }
+
+      
+   return toSort;
+
+}

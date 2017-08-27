@@ -1,0 +1,35 @@
+
+// sorts in place
+void sortKeyed@v(int$size[secure v] toSort) {
+
+   secure int tupleCount;
+   secure int nulls;
+   getArrElements(toSort, tupleCount);
+   nulls = v - tupleCount;
+
+   secure int$sortKeySize[secure v] sortKey;
+   int1 signal = $signal;
+
+
+   bfor (v) (int i=0; i<v; i=i+1) {
+         sortKey[i] = extractKey(toSort[i]);
+   }
+
+
+   sortWithPayload(sortKey, toSort, signal);
+
+   
+   // push the nulls to the end
+   bfor(v)(int i = 0; i < v; i=i+1) {
+       if(i < tupleCount) {
+        toSort[i] = toSort[i + nulls]; 
+	}
+	else {
+	   toSort[i] = 0;
+       }
+
+   }
+
+
+
+}

@@ -1,0 +1,15 @@
+
+
+
+$structName $tupleName;
+
+int$size[n] output;
+int outIdx = 0;
+
+bfor (n) (int i=0; i<n; i=i+1) { 
+    tuple = deserialize$structName(a[i]);
+    if($filter) {
+    	output[outIdx] = a[i];
+    }
+}
+ 

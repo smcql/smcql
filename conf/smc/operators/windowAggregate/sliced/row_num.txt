@@ -1,0 +1,44 @@
+package $packageName;
+
+typedef char = int8;
+
+
+secure int$dSize writeValues(int$sSize srcTuple, int rowNum) {
+       int$dSize dstTuple;
+       $writeDst
+       dstTuple$rowNum = rowNum;
+       return dstTuple;
+}
+
+secure int1 applyFilter(secure int$sSize tuple) {
+	secure int1 ret = 0;
+	$applyFilter
+	
+	return ret;
+}
+
+// sliced = receives this one partition at a time
+// PARTITION BY handled by caller
+// sort is outsourced in psql to a sort() operator
+int$dSize[l] run@l(int$sSize[l] src, int$sSize[l] rhs) { 
+
+    secure int$dSize[secure l] dst;
+
+    int tupleCount;
+    getArrElements(src, tupleCount);
+    int dstIdx = 0;
+	secure int1 filter = 0;
+    
+    
+    bfor(l) (secure int i = 0; i < tupleCount; i = i + 1) {
+        filter = applyFilter(src[i]);
+        if (filter == 1) {
+            dst[i] = writeValues(src[i], i);
+        	dstIdx = dstIdx + 1;
+        }
+	   
+    }
+
+   setArrElements(dst, dstIdx);
+   return dst;
+}

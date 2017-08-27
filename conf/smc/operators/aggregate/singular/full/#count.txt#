@@ -1,0 +1,14 @@
+package $packageName;
+
+
+// if used for COUNT(DISTINCT), distinct inserted at compile time
+int64[1] run@v(int$size[v] a, int$size[v] b) {
+	int tupleCount;
+	getArrElements(a, tupleCount);	
+	int$size[v] aPrime = a;
+
+        secure int64[1] dst;
+	dst[0] = tupleCount;
+	return dst;
+}
+

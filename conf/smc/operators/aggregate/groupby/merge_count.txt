@@ -1,0 +1,42 @@
+package $packageName;
+
+
+int$size[m+n] run@m@n(int$size[m] a, int$size[n] b) {      
+
+      secure int aIdx = 0;
+      secure int bIdx = 0;
+      secure int mIdx = 0;
+
+
+
+      secure int$size[secure m+n] mergedCount;            
+      secure int$size merged;
+
+      bwhile(n+m)(aIdx < m || bIdx < n) {
+      
+          
+          if(aCnt.groupBy == bCnt.groupBy) {
+	     merged = a[aIdx];
+
+	     merged$cntMask = a[aIdx]$cntMask + b[bIdx]$cntMask;
+	     aIdx = aIdx + 1;
+	     bIdx = bIdx + 1;
+
+	  }
+	  else if (bCnt.groupBy < aCnt.groupBy || aIdx == m){
+	      merged = bCnt;
+	      bIdx = bIdx + 1;
+	     }
+	 else {
+	    merged = aCnt;
+	    aIdx = aIdx + 1;
+	    }
+
+	  mergedCount[mIdx] = merged;
+	  mIdx=mIdx+1;
+	}
+
+      setArrSize(merged, mIdx);	   
+      return mergedCount;
+
+}
