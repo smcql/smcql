@@ -82,7 +82,7 @@ Running the example queries on different machines
 
 6. Run the example command on the honest broker, from the SMCQL repository:
 
-    $ ./build_and_execute.sh conf/workload/sql/comorbidity.sql remoteDB1 remoteDB2
+    `$ ./build_and_execute.sh conf/workload/sql/comorbidity.sql remoteDB1 remoteDB2`
 
 Notes:
 
@@ -94,4 +94,10 @@ Notes:
 References
 --------------------------------------------------------------------------------
 
+*Source Paper*:
+
 J. Bater, G. Elliott, C. Eggen, A. Kho, and J. Rogers, “SMCQL : Secure Querying for Federated Databases.”
+
+*Original ObliVM Paper*:
+
+C. Liu, X. S. Wang, K. Nayak, Y. Huang, and E. Shi, “ObliVM : A Programming Framework for Secure Computation,” Oakland, pp. 359–376, 2015.
