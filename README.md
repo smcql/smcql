@@ -98,6 +98,6 @@ References
 
 J. Bater, G. Elliott, C. Eggen, A. Kho, and J. Rogers, “SMCQL : Secure Querying for Federated Databases.”
 
-*Original ObliVM Paper*:
+*ObliVM*:
 
 C. Liu, X. S. Wang, K. Nayak, Y. Huang, and E. Shi, “ObliVM : A Programming Framework for Secure Computation,” Oakland, pp. 359–376, 2015.
