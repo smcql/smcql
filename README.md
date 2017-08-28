@@ -94,9 +94,9 @@ Notes:
 References
 --------------------------------------------------------------------------------
 
-*Source Paper*:
+*SMCQL*:
 
-J. Bater, G. Elliott, C. Eggen, A. Kho, and J. Rogers, “SMCQL : Secure Querying for Federated Databases.”
+J. Bater, G. Elliott, C. Eggen, S. Goel, A. Kho, and J. Rogers, “SMCQL: Secure Querying for Federated Databases.”, VLDB, 10(6), pages 673-684, 2017.
 
 *ObliVM*:
 
