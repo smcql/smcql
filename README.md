@@ -4,7 +4,7 @@
 Author
 --------------------------------------------------------------------------------
 
-SMCQL is developed and currently maintained by Johes Bater, under the direction of Jennie Rogers.
+SMCQL is developed and currently maintained by Johes Bater, under the direction of Jennie Rogers.  It translates SQL statements into <a href="http://oblivm.com/index.html">ObliVM<a/> programs for secure query evaluation.
 
 
 --------------------------------------------------------------------------------
