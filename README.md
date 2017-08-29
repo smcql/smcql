@@ -32,23 +32,23 @@ Clone the repository:
 
 Install the dependencies as needed:
 
-* Install PostgreSQL: 
+* Install PostgreSQL:
 
-	$ sudo apt-get install postgresql postgresql-contrib
+	`$ sudo apt-get install postgresql postgresql-contrib`
 
 * Create a superuser PostgreSQL role for SMCQL: 
 
-	$ sudo su - postgres
-	$ createuser -sPE smcql
-	$ exit
+	`$ sudo su - postgres`  
+	`$ createuser -sPE smcql`  
+	`$ exit`  
 	
 * Install Maven: 
 
-	$ sudo apt-get install maven
+	`$ sudo apt-get install maven`
 
 * Install Java: 
 
-	$ sudo apt-get install default-jdk
+	`$ sudo apt-get install default-jdk`
 
 Edit the configuration files as needed:
 
