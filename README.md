@@ -4,7 +4,7 @@
 Author
 --------------------------------------------------------------------------------
 
-SMCQL is developed and currently maintained by Johes Bater, under the direction of Jennie Rogers.  It translates SQL statements into <a href="http://oblivm.com/index.html">ObliVM<a/> programs for secure query evaluation.
+SMCQL is developed and currently maintained by Johes Bater, under the direction of Jennie Rogers.  It translates SQL statements into <a href="http://oblivm.com/index.html">ObliVM</a> programs for secure query evaluation.
 
 
 --------------------------------------------------------------------------------
@@ -17,6 +17,8 @@ The code is a research-quality proof of concept, and is still under development 
 Requirements
 --------------------------------------------------------------------------------
 * PostgreSQL 9.5+
+* Apache Calcite 1.8+
+* Apache Maven 3+
 * Oracle Java 8+
 * JavaCC 5.0+
 * Python 2.7+
@@ -24,14 +26,38 @@ Requirements
 --------------------------------------------------------------------------------
 Setup
 --------------------------------------------------------------------------------
-Edit the configuration files:
+Clone the repository:
+
+	$ git clone https://github.com/smcql/smcql.git
+
+Install the dependencies as needed:
+
+* Install PostgreSQL: 
+
+	$ sudo apt-get install postgresql postgresql-contrib
+
+* Create a superuser PostgreSQL role for SMCQL: 
+
+	$ sudo su - postgres
+	$ createuser -sPE smcql
+	$ exit
+	
+* Install Maven: 
+
+	$ sudo apt-get install maven
+
+* Install Java: 
+
+	$ sudo apt-get install default-jdk
+
+Edit the configuration files as needed:
 
 * conf/setup.localhost
 * conf/connections/localhost
 
-This configures your local environment for SMCQL.
+This configures your local environment for SMCQL. Note that you should insert your PostgreSQL password for SMCQL here. You also may want to add setup.localhost to your .gitignore to avoid pushing your password.
 
-Run the following command:
+Start up PostgreSQL and run the following command in the SMCQL home directory:
 
     $ ./setup.sh
 

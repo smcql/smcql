@@ -16,5 +16,5 @@ semijoin-execution=false
 host=localhost
 port=5432
 db=smcql_testDB
-user=<insert psql username>
+user=smcql
 password=<insert psql password>

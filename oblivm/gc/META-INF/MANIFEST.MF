@@ -1,6 +1,0 @@
-Rsrc-Class-Path: ./ commons-cli-1.2.jar commons-io-2.4.jar commons-lan
- g-2.6.jar commons-lang3-3.3.2.jar junit.jar org.hamcrest.core_1.3.0.v
- 201303031735.jar argparse4j-0.1.0.jar
-Class-Path: .
-Rsrc-Main-Class: com.oblivm.backend.lang.inter.Cmd
-Main-Class: org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader
