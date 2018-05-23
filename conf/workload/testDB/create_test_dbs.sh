@@ -23,15 +23,15 @@ do
     createdb $dbName
 
     psql $dbName -f $path/conf/workload/testDB/test_schema.sql
-    psql $dbName -c "COPY diagnoses FROM '$path/conf/workload/testDB/$i/diagnoses.csv' WITH DELIMITER ','"
-    psql $dbName -c "COPY medications FROM '$path/conf/workload/testDB/$i/medications.csv' WITH DELIMITER ','"
-    psql $dbName -c "COPY site FROM '$path/conf/workload/testDB/$i/site.csv' WITH DELIMITER ','"
+    psql $dbName -c "\COPY diagnoses FROM '$path/conf/workload/testDB/$i/diagnoses.csv' WITH DELIMITER ','"
+    psql $dbName -c "\COPY medications FROM '$path/conf/workload/testDB/$i/medications.csv' WITH DELIMITER ','"
+    psql $dbName -c "\COPY site FROM '$path/conf/workload/testDB/$i/site.csv' WITH DELIMITER ','"
 
     val=$i
     if (($val == 1)); then
-        psql $dbName -c "COPY remote_diagnoses FROM '$path/conf/workload/testDB/2/diagnoses.csv' WITH DELIMITER ','"
+        psql $dbName -c "\COPY remote_diagnoses FROM '$path/conf/workload/testDB/2/diagnoses.csv' WITH DELIMITER ','"
     else
-        psql $dbName -c "COPY remote_diagnoses FROM '$path/conf/workload/testDB/1/diagnoses.csv' WITH DELIMITER ','"
+        psql $dbName -c "\COPY remote_diagnoses FROM '$path/conf/workload/testDB/1/diagnoses.csv' WITH DELIMITER ','"
     fi
     psql $dbName -c "CREATE TABLE remote_cdiff_cohort_diagnoses AS (SELECT * FROM remote_diagnoses WHERE icd9='008.45')"
     psql $dbName -c "CREATE TABLE remote_mi_cohort_diagnoses AS (SELECT * FROM remote_diagnoses WHERE icd9 like '414%')"
