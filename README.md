@@ -4,7 +4,7 @@
 Author
 --------------------------------------------------------------------------------
 
-SMCQL is developed and currently maintained by [Johes Bater](johes@u.northwestern.edu), under the direction of Jennie Rogers.  It translates SQL statements into <a href="http://oblivm.com/index.html">ObliVM</a> programs for secure query evaluation.
+SMCQL is developed and currently maintained by [Johes Bater](mailto:johes@u.northwestern.edu), under the direction of Jennie Rogers.  It translates SQL statements into <a href="http://oblivm.com/index.html">ObliVM</a> programs for secure query evaluation.
 
 
 --------------------------------------------------------------------------------
