@@ -39,6 +39,7 @@ Install the dependencies as needed:
 
 
 	`$ sudo useradd smcql`
+
 	`$ sudo su smcql`
 	
 	
