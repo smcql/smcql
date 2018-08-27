@@ -49,14 +49,14 @@ Install the dependencies as needed:
 
 	`$ sudo apt-get install default-jdk`
 
-Edit the configuration files as needed:
+Create a user named "smcql" with access to postgresql on all nodes.  Edit the configuration files in the repo as needed:
 
 * conf/setup.localhost
 * conf/connections/localhost
 
-This configures your local environment for SMCQL. Note that you should insert your PostgreSQL password for SMCQL here. You also may want to add setup.localhost to your .gitignore to avoid pushing your password.
+This configures your local environment. Note that you should insert your PostgreSQL password for smcql here. You also may want to add setup.localhost to your .gitignore to avoid pushing your password.
 
-Start up PostgreSQL and run the following command in the SMCQL home directory:
+Start up PostgreSQL and run the following command in the smcql home directory:
 
     $ ./setup.sh
 
