@@ -35,6 +35,10 @@ Install the dependencies as needed:
 
 	`$ sudo apt-get install postgresql postgresql-contrib`
 
+* Create a user named "smcql".
+
+        `$ useradd smcql`
+	
 * Create a superuser PostgreSQL role for SMCQL: 
 
 	`$ sudo su - postgres`  
@@ -49,7 +53,7 @@ Install the dependencies as needed:
 
 	`$ sudo apt-get install default-jdk`
 
-Create a user named "smcql" with access to postgresql on all nodes.  Edit the configuration files in the repo as needed:
+Edit the configuration files in the repo as needed:
 
 * conf/setup.localhost
 * conf/connections/localhost
