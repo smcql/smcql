@@ -35,9 +35,12 @@ Install the dependencies as needed:
 
 	`$ sudo apt-get install postgresql postgresql-contrib`
 
-* Create a user named "smcql".
+* Create a user named smcql and switch to that user.
 
-        `$ useradd smcql`
+
+	`$ sudo useradd smcql`
+	`$ sudo su smcql`
+	
 	
 * Create a superuser PostgreSQL role for SMCQL: 
 
