@@ -33,10 +33,7 @@ public class SliceKeyTest extends BaseTest {
 	private void setupAspirinCount() throws Exception {
 		
 		String testName = "aspirin-count";
-		List<SecureRelDataTypeField> expectedSliceKey = new ArrayList<SecureRelDataTypeField>();
-
-		SecureRelDataTypeField srcAttribute = Utilities.lookUpAttribute("diagnoses", "patient_id");
-		expectedSliceKey.add(srcAttribute);
+		List<SecureRelDataTypeField> expectedSliceKey = new ArrayList<SecureRelDataTypeField>(); //no slice keys at output
 	
 		expectedSliceKeys.put(testName, expectedSliceKey);
 	}

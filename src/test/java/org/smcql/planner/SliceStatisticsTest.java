@@ -15,10 +15,12 @@ import org.smcql.type.SecureRelDataTypeField;
 
 public class SliceStatisticsTest extends SliceKeyTest {
 	private Map<String, Map<SecureRelDataTypeField, SliceStatistics> > expectedStatistics; // (test, (key, values))
+	private Map<String, String> expectedValues;
 				
 	protected void setUp() throws Exception {
 		super.setUp();
 		expectedStatistics = new HashMap<String, Map<SecureRelDataTypeField, SliceStatistics> >();
+		expectedValues = new HashMap<String, String>();
 	
 		setupAspirintCount();
 		setupCDiff();
@@ -28,52 +30,15 @@ public class SliceStatisticsTest extends SliceKeyTest {
 	private void setupAspirintCount() throws Exception {
 		
 		String testName = "aspirin-count";
-		final List<SecureRelDataTypeField> expectedKeys = expectedSliceKeys.get(testName);
-		SecureRelDataTypeField diagsSlice = expectedKeys.get(0);
-		SecureRelDataTypeField medsSlice = expectedKeys.get(1);
 		
 		
 		Map<SecureRelDataTypeField, SliceStatistics> statistics = new HashMap<SecureRelDataTypeField, SliceStatistics>();
-		SliceStatistics diagnosisStatistics = new SliceStatistics(new SliceKeyDefinition(Arrays.asList(diagsSlice)));
-		
-		int[][] diagnosisOutcomes = {
-				{ 3, 4, 2 },
-				{ 4, 4, 2 },
-				{ 5, 7, 2 },
-				{ 6, 7, 2 },
-				{ 1, 4, 2 },
-				{ 1, 7, 2 },
-				{ 2, 4, 2 },
-				{ 2, 7, 2 }	
-		};
-		for(int i = 0; i < diagnosisOutcomes.length; ++i)  {
-			Tuple t = createTuple(diagsSlice.getStoredAttribute(), diagnosisOutcomes[i]);
-			diagnosisStatistics.addDataSource(t);
-			
-		}
-		
-		statistics.put(diagsSlice, diagnosisStatistics);
 		expectedStatistics.put(testName + "-diagnoses", statistics);
 		
 		
 		statistics = new HashMap<SecureRelDataTypeField, SliceStatistics>();
-		SliceStatistics medicationStatistics = new SliceStatistics(new SliceKeyDefinition(Arrays.asList(medsSlice)));
-		
-		int[][] medicationOutcomes = {
-				{ 1, 4, 1 },
-				{ 3, 4, 1 },
-				{ 5, 7, 1 },
-				{ 6, 7, 1 }
-		};
-		
-		for(int i = 0; i < medicationOutcomes.length; ++i)  {
-			Tuple t = createTuple(medsSlice.getStoredAttribute(), medicationOutcomes[i]);
-			medicationStatistics.addDataSource(t);
-			
-		}
-		
-		statistics.put(medsSlice, medicationStatistics);
 		expectedStatistics.put(testName + "-medications", statistics);
+		expectedValues.put(testName, "");
 	}
 	
 
@@ -87,27 +52,14 @@ public class SliceStatisticsTest extends SliceKeyTest {
 		
 		final Map<SecureRelDataTypeField, SliceStatistics> statistics = new HashMap<SecureRelDataTypeField, SliceStatistics>();
 		SliceStatistics attrStatistics = new SliceStatistics(new SliceKeyDefinition(Arrays.asList(slice)));
-
-		int[][] outcomes = new int[][] {
-				{ 1, 4, 2 },
-				{ 2, 4, 2 },
-				{ 2, 7, 2 },
-				{ 1, 7, 2 },
-				{ 3, 4, 2 },
-				{ 4, 4, 2 },
-				{ 5, 7, 2 },
-				{ 6, 7, 2 }
-				};
-
-		for(int i = 0; i < outcomes.length; ++i)  {
-			Tuple t = createTuple(slice.getStoredAttribute(), outcomes[i]);
-			attrStatistics.addDataSource(t);
-			
-		}
 		
 		statistics.put(slice, attrStatistics);
 		
 		expectedStatistics.put(testName + "-diagnoses", statistics);		
+		
+		expectedValues.put(testName + "-diagnoses", "Key: [#0: patient_id INTEGER Public]\n" + 
+				"Single site values: <[3], (4, 2)> <[4], (4, 2)> <[5], (7, 2)> <[6], (7, 2)> \n" + 
+				"Distributed values: <[1], [(4, 2), (7, 2)]> <[2], [(4, 2), (7, 2)]> ");
 	}
 
 	
@@ -118,6 +70,7 @@ public class SliceStatisticsTest extends SliceKeyTest {
 		final Map<SecureRelDataTypeField, SliceStatistics> statistics = new HashMap<SecureRelDataTypeField, SliceStatistics>();
 		
 		expectedStatistics.put(testName, statistics);
+		expectedValues.put(testName, "");
 	}
 
 
@@ -147,27 +100,13 @@ public class SliceStatisticsTest extends SliceKeyTest {
 		List<SecureRelDataTypeField> sliceKeys = expectedSliceKeys.get(testName);
 		for(SecureRelDataTypeField key : sliceKeys) {
 			SliceStatistics attrStatistics = StatisticsCollector.collect(new SliceKeyDefinition(Arrays.asList(key))); 
-			Map<SecureRelDataTypeField, SliceStatistics> expectedLookup = expectedStatistics.get(testName + "-" + key.getStoredTable());	
-			SliceStatistics expected = expectedLookup.get(key);
 			
+			
+			String expected = expectedValues.get(testName + "-" + key.getStoredTable());
 			System.out.println("Expected: " + expected);
 			System.out.println("Observed: " + attrStatistics);
-			
-			assertTrue(attrStatistics.toString().equals(expected.toString()));	
+			assertEquals(attrStatistics.toString().trim(), expected.trim());
 		}
 		
-	}
-	
-	// create a tuple with k int fields
-	private Tuple createTuple(String src, int[] fields) {
-		Tuple t = new Tuple();
-		
-		SecureRelDataTypeField sPrime = new SecureRelDataTypeField(src, 0, null);
-		for(int i = 0; i < fields.length; ++i) {
-			IntField intField = new IntField(sPrime, fields[i]);
-			t.addField(intField);
-		}
-		
-		return t;
 	}
 }
