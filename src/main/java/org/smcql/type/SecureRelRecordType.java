@@ -17,7 +17,7 @@ import org.apache.calcite.rel.type.RelRecordType;
 import org.apache.calcite.rex.RexNode;
 import org.apache.calcite.sql.type.BasicSqlType;
 import org.apache.calcite.sql.type.SqlTypeName;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.smcql.db.data.field.Field;
 import org.smcql.db.schema.SecureSchemaLookup;
 import org.smcql.plan.operator.Join;
