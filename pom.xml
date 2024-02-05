@@ -7,7 +7,25 @@
   <version>0.5</version>
   <name>smcql-open-source</name>
   <url>http://maven.apache.org</url>
+  <repositories>
+    <repository>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>always</updatePolicy>
+        <checksumPolicy>warn</checksumPolicy>
+      </releases>
+      <id>mapr</id>
+      <name></name>
+      <url>https://repository.mapr.com/nexus/content/groups/mapr-public/conjars</url>
+      <layout>default</layout>
+    </repository>
+  </repositories>
   <dependencies>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.1</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -21,7 +39,7 @@
     <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>9.4.1208.jre7</version>
+            <version>42.2.6</version>
         </dependency>
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -51,7 +69,7 @@
 <dependency>
     <groupId>org.gridkit.lab</groupId>
     <artifactId>nanocloud</artifactId>
-    <version>0.8.11</version>
+    <version>0.8.21</version>
 </dependency>
 
 
